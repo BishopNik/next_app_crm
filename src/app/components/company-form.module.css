@@ -1,0 +1,38 @@
+/** @format */
+
+.form {
+}
+
+.title {
+	margin-bottom: 42px;
+	color: #111827;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 28px; /* 140% */
+}
+
+.button_close {
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	cursor: pointer;
+}
+
+.flex_field {
+	display: flex;
+	gap: 28px;
+	margin-bottom: 40px;
+}
+
+.flex_field_col {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.flex_field_sup {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}

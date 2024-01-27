@@ -5,24 +5,23 @@ import clsx from 'clsx';
 import styles from './status.module.css';
 import main from './main-status.module.css';
 
-export enum Status {
-	Active = 'active',
-	NotActive = 'not_active',
-	Pending = 'pending',
-	Suspended = 'suspended',
+enum StatusText {
+	active = 'Active',
+	not_active = 'Not active',
+	pending = 'Pending',
+	suspended = 'Suspended',
 }
 
 export interface StatusComponentProps {
-	type: Status;
-	children: React.ReactNode;
+	type: keyof typeof StatusText;
 	disabled?: boolean;
 }
 
-function StatusComponent({ type, disabled, children }: StatusComponentProps) {
+function StatusComponent({ type, disabled }: StatusComponentProps) {
 	return (
 		<div className={clsx(main.main_label, styles[type], disabled && main.disabled)}>
-			<div className={main.boolet}></div>
-			{children}
+			<span className={main.boolet}></span>
+			{StatusText[type]}
 		</div>
 	);
 }

@@ -1,0 +1,28 @@
+/** @format */
+
+.main_button {
+	display: inline-flex;
+	padding: 10px 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+
+	border-radius: 4px;
+	border: none;
+	background-color: #111827;
+	color: #fafafa;
+
+	font-family: 'Plus Jakarta Sans', sans-serif;
+	text-align: center;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 24px; /* 150% */
+
+	cursor: pointer;
+}
+
+.main_button:hover {
+	color: #f4f4f5;
+	background-color: #1f2937;
+}

@@ -1,0 +1,66 @@
+/** @format */
+
+.main {
+	display: flex;
+	align-items: center;
+	width: 1120px;
+	border-radius: 4px;
+	background-color: #fafafa;
+	overflow: hidden;
+
+	color: #111827;
+	text-align: center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px; /* 142.857% */
+}
+
+.deco {
+	width: 4px;
+	height: 56px;
+
+	margin-right: 12px;
+}
+
+.product {
+	width: 53px;
+	padding-right: 110px;
+}
+
+.company {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex: 1;
+}
+
+.logo {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: cadetblue;
+}
+
+.title {
+	width: 168px;
+}
+
+.status {
+	width: 160px;
+	text-align: center;
+}
+
+.promo {
+	width: 160px;
+	text-align: center;
+}
+
+.country {
+	width: 160px;
+	text-align: center;
+}
+.data {
+	width: 160px;
+	text-align: center;
+}

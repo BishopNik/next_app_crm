@@ -1,0 +1,23 @@
+/** @format */
+
+.main {
+	background-color: #f3f4f6;
+	width: 1200px;
+
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 40px;
+}
+
+.header {
+	display: flex;
+	align-content: center;
+	padding-top: 32px;
+	padding-bottom: 20px;
+}
+
+.companies {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}

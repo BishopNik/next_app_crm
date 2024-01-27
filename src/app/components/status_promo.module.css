@@ -1,0 +1,22 @@
+/** @format */
+
+.main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px; /* 142.857% */
+
+	color: #b91c1c;
+}
+
+.active {
+	color: #15803d;
+}
+
+.not_active {
+	color: #b91c1c;
+}
