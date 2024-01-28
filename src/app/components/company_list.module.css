@@ -3,21 +3,38 @@
 .main {
 	background-color: #f3f4f6;
 	width: 1200px;
-
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-bottom: 40px;
+	border-radius: 4px;
+	padding: 32px 40px;
 }
 
-.header {
-	display: flex;
-	align-content: center;
-	padding-top: 32px;
-	padding-bottom: 20px;
+.table {
+	width: 100%;
 }
 
-.companies {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+.colomn {
+	padding-bottom: 32px;
+
+	color: #111827;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 20px; /* 142.857% */
+}
+
+.colomn:nth-child(1) {
+	width: 179px;
+	text-align: left;
+}
+
+.colomn:nth-child(2) {
+	width: 301px;
+	text-align: left;
+}
+
+.colomn:nth-child(3),
+.colomn:nth-child(4),
+.colomn:nth-child(5),
+.colomn:nth-child(6) {
+	width: 160px;
+	text-align: center;
 }

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import styles from './status.module.css';
 import main from './main-status.module.css';
 
-enum StatusText {
+export enum StatusText {
 	active = 'Active',
 	not_active = 'Not active',
 	pending = 'Pending',
@@ -18,10 +18,11 @@ export interface StatusComponentProps {
 }
 
 function StatusComponent({ type, disabled }: StatusComponentProps) {
+	console.log(type);
 	return (
 		<div className={clsx(main.main_label, styles[type], disabled && main.disabled)}>
 			<span className={main.boolet}></span>
-			{StatusText[type]}
+			<span className={main.button_text}>{StatusText[type]}</span>
 		</div>
 	);
 }

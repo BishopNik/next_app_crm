@@ -1,10 +1,6 @@
 /** @format */
 
 .main {
-	display: flex;
-	align-items: center;
-	width: 1120px;
-	border-radius: 4px;
 	background-color: #fafafa;
 	overflow: hidden;
 
@@ -16,7 +12,28 @@
 	line-height: 20px; /* 142.857% */
 }
 
+.colomn:nth-child(1) {
+	display: flex;
+	align-items: center;
+	width: 179px;
+	text-align: left;
+}
+
+.colomn:nth-child(2) {
+	width: 301px;
+	text-align: left;
+}
+
+.colomn:nth-child(3),
+.colomn:nth-child(4),
+.colomn:nth-child(5),
+.colomn:nth-child(6) {
+	width: 160px;
+	text-align: center;
+}
+
 .deco {
+	display: inline-block;
 	width: 4px;
 	height: 56px;
 
@@ -24,43 +41,17 @@
 }
 
 .product {
-	width: 53px;
-	padding-right: 110px;
-}
-
-.company {
-	display: flex;
-	align-items: center;
-	gap: 16px;
-	flex: 1;
+	text-transform: capitalize;
 }
 
 .logo {
+	display: inline-block;
 	width: 32px;
 	height: 32px;
 	border-radius: 50%;
 	background-color: cadetblue;
+	margin-right: 16px;
 }
-
-.title {
-	width: 168px;
-}
-
-.status {
-	width: 160px;
-	text-align: center;
-}
-
-.promo {
-	width: 160px;
-	text-align: center;
-}
-
-.country {
-	width: 160px;
-	text-align: center;
-}
-.data {
-	width: 160px;
-	text-align: center;
+.space {
+	height: 8px;
 }

@@ -8,6 +8,13 @@
 	border-radius: 28px;
 }
 
+.button_text {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px; /* 142.857% */
+}
+
 .boolet {
 	width: 4px;
 	height: 4px;

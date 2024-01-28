@@ -8,31 +8,25 @@ import InputField from './input-field';
 import UploadField from './upload-field';
 import { Formik, Form } from 'formik';
 import Button from './button';
+import { StatusText } from './status_component';
 
 interface CompanyFormProps {
 	onClose: () => void;
 }
 
-export type CompanyFieldValues = {
-	upload: File | string;
+export interface CompanyFieldValues {
+	logo: File | string;
 	name: string;
 	description: string;
-	status: CompanyStatus;
+	status: StatusText;
 	join: string;
 	category: string;
 	country: string;
-};
-
-export enum CompanyStatus {
-	Active = 'Active',
-	NotActive = 'Not active',
-	Pending = 'Pending',
-	Suspended = 'Suspended',
 }
 
 const initialValues: CompanyFieldValues = {
-	upload: '',
-	status: CompanyStatus.Active,
+	logo: '',
+	status: StatusText.active,
 	country: '',
 	name: '',
 	category: '',
@@ -47,7 +41,7 @@ function CompanyForm({ onClose }: CompanyFormProps) {
 		onClose();
 	};
 
-	const statusValues = Object.values(CompanyStatus);
+	const statusValues = Object.values(StatusText);
 
 	return (
 		<Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -55,7 +49,7 @@ function CompanyForm({ onClose }: CompanyFormProps) {
 				<p className={styles.title}>Add new company</p>
 				<div className={styles.flex_field}>
 					<div className={styles.flex_field_sup}>
-						<UploadField required label='Logo' name='upload' id='upload' />
+						<UploadField required label='Logo' name='logo' id='logo' />
 						<div className={styles.flex_field_col}>
 							<InputField
 								required

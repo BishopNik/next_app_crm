@@ -5,14 +5,10 @@ import clsx from 'clsx';
 import styles from './status_promo.module.css';
 import CheckmarkOkSVG from '../icon/checkmark_ok-icon';
 import CheckmarkNotSVG from '../icon/checkmark_not-icon';
-
-enum PromoStatusText {
-	active = 'Active',
-	not_active = 'Not active',
-}
+import { StatusText } from './status_component';
 
 export interface PromoStatusComponentProps {
-	type: keyof typeof PromoStatusText;
+	type: keyof typeof StatusText;
 }
 
 function PromoStatusComponent({ type }: PromoStatusComponentProps) {
