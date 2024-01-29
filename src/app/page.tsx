@@ -10,23 +10,34 @@ import CategoriesCompany from '@/app/components/categories_company';
 import TotalInfo from '@/app/components/total_info';
 import PromotionTable from '@/app/components/promotion_table';
 import PromotionItems from '@/app/components/promotion_items';
-import CompanyItem from './components/company_item';
+import CompanyItem from '@/app/components/company_item';
+import SalesDetailsTable from '@/app/components/sales_details_table';
+import SalesDetailsItems from '@/app/components/sales_details_item';
+import CountriesCompanies from './components/countries_companies';
+import Sidebar from './components/sidebar';
+import Header from './components/header';
 
 export default function Home() {
-	const company = {
-		logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
-		name: 'Costco Wholesale',
-		category: 'product',
-		status: 'active' as const,
-		statusPromo: 'active' as const,
-		country: 'USA',
-		data: '24.10.2012',
-		description:
-			'Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-	};
+	function getRandomStatus() {
+		const statuses = ['active', 'not_active', 'suspended', 'pending'] as const;
+		const randomIndex = Math.floor(Math.random() * statuses.length);
+		return statuses[randomIndex];
+	}
 
 	const companies = [];
-	for (let i = 0; i < 3; i++) {
+	for (let i = 0; i < 11; i++) {
+		const company = {
+			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
+			name: 'Costco Wholesale',
+			category: 'product',
+			status: getRandomStatus(),
+			statusPromo: getRandomStatus(),
+			country: 'USA',
+			data: '24.10.2012',
+			description:
+				'Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+		};
+
 		companies.push(company);
 	}
 
@@ -35,11 +46,6 @@ export default function Home() {
 		discountSrcImg: 'https://www.coral-print.ru/assets/images/printer-composition.jpg',
 		discountTitle: 'Discount on this product',
 		discountAbout: 'Jorem ipsum dolor sit amet, consectetur adipiscing elit.',
-	};
-
-	const data = {
-		groupItems: 'Products',
-		countItems: Math.floor(Math.random() * 1001),
 	};
 
 	const categories = [];
@@ -58,7 +64,7 @@ export default function Home() {
 	};
 
 	const promotions = [];
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 7; i++) {
 		promotions.push({
 			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
 			companyName: 'Costco Wholesale',
@@ -67,27 +73,53 @@ export default function Home() {
 		});
 	}
 
+	const sales = [];
+	for (let i = 0; i < 6; i++) {
+		sales.push({
+			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
+			companyName: 'Costco Wholesale',
+			sold: Math.floor(Math.random() * 1000),
+			income: Math.floor(Math.random() * 1000),
+		});
+	}
+
+	const coutnriesCompany = [
+		{ countries: 'Canada', count: 4 },
+		{ countries: 'USA', count: 4 },
+		{ countries: 'Italia', count: 2 },
+		{ countries: 'Ukraine', count: 2 },
+		{ countries: 'Spain', count: 2 },
+	];
+
 	return (
-		<main>
-			<h1 className='text-xl'>Hello world</h1>
-			<StatusComponent type='active' />
-			<StatusComponent type='not_active' disabled={true} />
-			<StatusComponent type='pending' disabled={true} />
-			<StatusComponent type='suspended' disabled={true} />
+		<main style={{ paddingBottom: '100px' }}>
 			<AddButtonCompany />
 			<AddPromotionCompany />
-			<CompanyList>
-				<CompanyItem companies={companies} />
-			</CompanyList>
-			<div style={{ display: 'flex', gap: '50px', padding: '100px' }}>
+
+			<div style={{ display: 'flex', gap: '50px', padding: '50px' }}>
+				<CompanyDetails company={companies[0]} />
 				<PromoDetails companyPromo={companyPromo} />
-				<CompanyDetails company={company} />
 			</div>
 			<TotalInfo count={count} />
 			<CategoriesCompany categories={categories} />
-			<PromotionTable>
-				<PromotionItems promotions={promotions} />
-			</PromotionTable>
+			<div style={{ display: 'flex', gap: '50px', padding: '30px' }}>
+				<PromotionTable>
+					<PromotionItems promotions={promotions} />
+				</PromotionTable>
+				<SalesDetailsTable>
+					<SalesDetailsItems sales={sales} />
+				</SalesDetailsTable>
+			</div>
+			<CountriesCompanies data={coutnriesCompany} />
+			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
+				<Sidebar link={'Companies'} />
+				<div>
+					<Header page={'Companies'} />
+					<CompanyList>
+						<CompanyItem companies={companies} />
+					</CompanyList>
+				</div>
+			</div>
 		</main>
 	);
 }

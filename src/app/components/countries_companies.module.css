@@ -1,0 +1,58 @@
+/** @format */
+
+.main {
+	position: relative;
+	width: 556px;
+	height: 348px;
+	border-radius: 4px;
+	background-color: #f3f4f6;
+
+	color: #111827;
+	font-family: 'Plus Jakarta Sans';
+	font-style: normal;
+	font-weight: 500;
+}
+
+.world {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 395px;
+	height: 260px;
+
+	background-image: url('../img/World.png');
+}
+
+.title {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	font-size: 20px;
+	line-height: 28px; /* 140% */
+}
+
+.country_list {
+	position: absolute;
+	top: 196px;
+	left: 22px;
+	display: inline-flex;
+	flex-direction: column;
+	gap: 8px;
+
+	font-size: 14px;
+
+	line-height: 20px; /* 142.857% */
+}
+
+.country {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.deco {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #e9d5ff;
+}

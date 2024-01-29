@@ -1,0 +1,47 @@
+/** @format */
+
+.main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex: 1;
+	padding: 24px 40px;
+	color: #111827;
+	font-family: 'Plus Jakarta Sans';
+	font-style: normal;
+	font-weight: 600;
+	border-bottom: 1px solid #d1d5db;
+}
+
+.page {
+	font-size: 30px;
+	line-height: 36px; /* 120% */
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding-left: 20px;
+	border-left: 1px solid #d1d5db;
+}
+
+.logo {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+}
+
+.user_data {
+}
+
+.user_name {
+	font-size: 15px;
+	line-height: 24px; /* 160% */
+}
+
+.user_email {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 20px; /* 142.857% */
+}
