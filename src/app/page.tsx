@@ -13,9 +13,11 @@ import PromotionItems from '@/app/components/promotion_items';
 import CompanyItem from '@/app/components/company_item';
 import SalesDetailsTable from '@/app/components/sales_details_table';
 import SalesDetailsItems from '@/app/components/sales_details_item';
-import CountriesCompanies from './components/countries_companies';
-import Sidebar from './components/sidebar';
-import Header from './components/header';
+import CountriesCompanies from '@/app/components/countries_companies';
+import Sidebar from '@/app/components/sidebar';
+import Header from '@/app/components/header';
+import FindInput from '@/app/components/find_input';
+import PromotionForm from '@/app/components/promotion_form';
 
 export default function Home() {
 	function getRandomStatus() {
@@ -49,7 +51,7 @@ export default function Home() {
 	};
 
 	const categories = [];
-	for (let i = 0; i < 7; i++) {
+	for (let i = 0; i < 8; i++) {
 		categories.push({
 			groupItems: 'Products',
 			countItems: Math.floor(Math.random() * 1001),
@@ -92,32 +94,86 @@ export default function Home() {
 	];
 
 	return (
-		<main style={{ paddingBottom: '100px' }}>
-			<AddButtonCompany />
-			<AddPromotionCompany />
+		<main
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				gap: '25px',
+				paddingBottom: '100px',
+			}}
+		>
+			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
+				<Sidebar link={'Dashboard'} />
+				<div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
+					<Header page={'Dashboard'} />
+					<TotalInfo count={count} />
 
-			<div style={{ display: 'flex', gap: '50px', padding: '50px' }}>
-				<CompanyDetails company={companies[0]} />
-				<PromoDetails companyPromo={companyPromo} />
+					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
+						<SalesDetailsTable>
+							<SalesDetailsItems sales={sales} />
+						</SalesDetailsTable>
+						<CategoriesCompany categories={categories} />
+					</div>
+					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
+						<CountriesCompanies data={coutnriesCompany} />
+						<PromotionTable>
+							<PromotionItems promotions={promotions} />
+						</PromotionTable>
+					</div>
+				</div>
 			</div>
-			<TotalInfo count={count} />
-			<CategoriesCompany categories={categories} />
-			<div style={{ display: 'flex', gap: '50px', padding: '30px' }}>
-				<PromotionTable>
-					<PromotionItems promotions={promotions} />
-				</PromotionTable>
-				<SalesDetailsTable>
-					<SalesDetailsItems sales={sales} />
-				</SalesDetailsTable>
-			</div>
-			<CountriesCompanies data={coutnriesCompany} />
+
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
 				<Sidebar link={'Companies'} />
 				<div>
 					<Header page={'Companies'} />
+					<div
+						style={{
+							padding: '32px 40px',
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<FindInput />
+						<AddButtonCompany />
+					</div>
+
 					<CompanyList>
 						<CompanyItem companies={companies} />
 					</CompanyList>
+				</div>
+			</div>
+
+			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
+				<Sidebar link={'Costco Wholesale'} />
+				<div>
+					<Header page={'Costco Wholesale'} />
+					<div
+						style={{
+							padding: '32px 40px',
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<FindInput />
+						<AddPromotionCompany />
+					</div>
+
+					<div
+						style={{
+							display: 'flex',
+							gap: '20px',
+							paddingLeft: '40px',
+							width: '1200px',
+						}}
+					>
+						<CompanyDetails company={companies[0]} />
+						<ul style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+							{Array.from({ length: 6 }).map((_, index) => (
+								<PromoDetails key={index} companyPromo={companyPromo} />
+							))}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</main>

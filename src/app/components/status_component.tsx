@@ -18,7 +18,6 @@ export interface StatusComponentProps {
 }
 
 function StatusComponent({ type, disabled }: StatusComponentProps) {
-	console.log(type);
 	return (
 		<div className={clsx(main.main_label, styles[type], disabled && main.disabled)}>
 			<span className={main.boolet}></span>
