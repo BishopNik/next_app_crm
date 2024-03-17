@@ -4,8 +4,8 @@
 
 import React, { useState } from 'react';
 import Button from './button';
-import Modal from './modal';
-import PromotionForm from './promotion_form';
+import Modal from '../blocks/modal';
+import PromotionForm from '../promotion/promotion_form';
 
 function AddPromotionCompany() {
 	const [show, setShow] = useState(false);

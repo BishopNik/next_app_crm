@@ -4,8 +4,8 @@
 
 import React, { useState } from 'react';
 import Button from './button';
-import Modal from './modal';
-import CompanyForm from './company-form';
+import Modal from '../blocks/modal';
+import CompanyForm from '../company/company-form';
 
 function AddButtonCompany() {
 	const [show, setShow] = useState(false);

@@ -50,10 +50,20 @@
 	margin-right: 4px;
 }
 
+.not_active {
+	width: 4px;
+	height: 36px;
+	border-radius: 2px;
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: 4px;
+}
+
 .exit_block {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
 	margin-top: auto;
+	cursor: pointer;
 }

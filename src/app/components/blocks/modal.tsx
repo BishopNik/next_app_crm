@@ -4,8 +4,8 @@
 
 import React, { Fragment, ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import styles from './company-form.module.css';
-import CloseSVG from '../icon/close-icon';
+import styles from '../company/company-form.module.css';
+import CloseSVG from '../../icon/close-icon';
 
 export interface ModalProps {
 	show: boolean;

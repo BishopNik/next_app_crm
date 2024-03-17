@@ -5,7 +5,7 @@
 import React, { InputHTMLAttributes, useRef } from 'react';
 import { Field, FieldAttributes } from 'formik';
 import styles from './upload-field.module.css';
-import UploadCenterSVG from '../icon/upload-center-icon';
+import UploadCenterSVG from '../../icon/upload-center-icon';
 
 export interface UploadFieldProps
 	extends InputHTMLAttributes<HTMLInputElement>,

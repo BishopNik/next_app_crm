@@ -2,9 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import StatusComponent from '@/app/components/status_component';
-import PromoStatusComponent from '@/app/components/status_promo';
-import { StatusText } from './status_component';
+import StatusComponent from '@/app/components/blocks/status_component';
+import PromoStatusComponent from '@/app/components/blocks/status_promo';
+import { StatusText } from '../blocks/status_component';
 import styles from './company_item.module.css';
 
 export interface Company {

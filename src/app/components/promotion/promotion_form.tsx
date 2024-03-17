@@ -4,10 +4,10 @@
 
 import React from 'react';
 import styles from './promotion-form.module.css';
-import InputField from './input-field';
-import UploadField from './upload-field';
+import InputField from '../blocks/input-field';
+import UploadField from '../blocks/upload-field';
 import { Formik, Form } from 'formik';
-import Button from './button';
+import Button from '../button/button';
 
 interface PromotionFormProps {
 	onClose: () => void;

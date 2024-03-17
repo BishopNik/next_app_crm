@@ -1,23 +1,22 @@
 /** @format */
 
-import StatusComponent from '@/app/components/status_component';
-import AddButtonCompany from '@/app/components/add_button_company';
-import AddPromotionCompany from '@/app/components/add_promotion_button';
-import CompanyList from '@/app/components/company_list';
-import PromoDetails from '@/app/components/promo_detail';
-import CompanyDetails from '@/app/components/company_details';
-import CategoriesCompany from '@/app/components/categories_company';
-import TotalInfo from '@/app/components/total_info';
-import PromotionTable from '@/app/components/promotion_table';
-import PromotionItems from '@/app/components/promotion_items';
-import CompanyItem from '@/app/components/company_item';
-import SalesDetailsTable from '@/app/components/sales_details_table';
-import SalesDetailsItems from '@/app/components/sales_details_item';
-import CountriesCompanies from '@/app/components/countries_companies';
-import Sidebar from '@/app/components/sidebar';
-import Header from '@/app/components/header';
-import FindInput from '@/app/components/find_input';
-import PromotionForm from '@/app/components/promotion_form';
+import AddButtonCompany from '@/app/components/button/add_button_company';
+import AddPromotionCompany from '@/app/components/button/add_button_promotion';
+import CompanyList from '@/app/components/company/company_list';
+import PromoDetails from '@/app/components/promotion/promo_detail';
+import CompanyDetails from '@/app/components/company/company_details';
+import CategoriesCompany from '@/app/components/company/categories_company';
+import TotalInfo from '@/app/components/blocks/total_info';
+import PromotionTable from '@/app/components/promotion/promotion_table';
+import PromotionItems from '@/app/components/promotion/promotion_items';
+import CompanyItem from '@/app/components/company/company_item';
+import SalesDetailsTable from '@/app/components/blocks/sales_details_table';
+import SalesDetailsItems from '@/app/components/blocks/sales_details_item';
+import CountriesCompanies from '@/app/components/company/countries_companies';
+import Sidebar from '@/app/components/blocks/sidebar';
+import Header from '@/app/components/blocks/header';
+import FindInput from '@/app/components/blocks/find_input';
+import { getSummaryCountries } from '@/api';
 
 export default function Home() {
 	function getRandomStatus() {
@@ -85,14 +84,6 @@ export default function Home() {
 		});
 	}
 
-	const coutnriesCompany = [
-		{ countries: 'Canada', count: 4 },
-		{ countries: 'USA', count: 4 },
-		{ countries: 'Italia', count: 2 },
-		{ countries: 'Ukraine', count: 2 },
-		{ countries: 'Spain', count: 2 },
-	];
-
 	return (
 		<main
 			style={{
@@ -115,7 +106,7 @@ export default function Home() {
 						<CategoriesCompany categories={categories} />
 					</div>
 					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
-						<CountriesCompanies data={coutnriesCompany} />
+						<CountriesCompanies />
 						<PromotionTable>
 							<PromotionItems promotions={promotions} />
 						</PromotionTable>

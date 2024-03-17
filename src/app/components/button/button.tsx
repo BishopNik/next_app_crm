@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react';
-import buttonCSS from '@/app/components/button.module.css';
+import buttonCSS from '@/app/components/button/button.module.css';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	disabled?: boolean;

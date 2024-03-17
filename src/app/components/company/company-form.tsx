@@ -4,11 +4,11 @@
 
 import React from 'react';
 import styles from './company-form.module.css';
-import InputField from './input-field';
-import UploadField from './upload-field';
+import InputField from '../blocks/input-field';
+import UploadField from '../blocks/upload-field';
 import { Formik, Form } from 'formik';
-import Button from './button';
-import { StatusText } from './status_component';
+import Button from '../button/button';
+import { StatusText } from '../blocks/status_component';
 
 interface CompanyFormProps {
 	onClose: () => void;

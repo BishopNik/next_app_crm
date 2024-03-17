@@ -19,18 +19,18 @@
 }
 
 .item:nth-child(1) {
-	background-image: url('../img/Group-01.png');
+	background-image: url('../../img/Group-01.png');
 }
 
 .item:nth-child(2) {
-	background-image: url('../img/Group-02.png');
+	background-image: url('../..//img/Group-02.png');
 }
 .item:nth-child(3) {
-	background-image: url('../img/Group-03.png');
+	background-image: url('../..//img/Group-03.png');
 }
 
 .item:nth-child(4) {
-	background-image: url('../img/Group-04.png');
+	background-image: url('../..//img/Group-04.png');
 }
 
 .line {

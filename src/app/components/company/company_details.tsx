@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import StatusComponent from '@/app/components/status_component';
+import StatusComponent from '@/app/components/blocks/status_component';
 import styles from './company_details.module.css';
 import { Company } from './company_item';
 
