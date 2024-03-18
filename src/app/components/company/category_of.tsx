@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import styles from './category_of.module.css';
 
 export interface Category {
+	categoryId: number;
 	groupItems: string;
 	countItems: number;
 }

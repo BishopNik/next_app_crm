@@ -4,10 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './header.module.css';
 
-function Header({ page }: { page: string }) {
+function Header() {
 	return (
-		<div className={styles.main}>
-			<h1 className={styles.page}>{page}</h1>
+		<header className={styles.main}>
+			{/* <h1 className={styles.page}>{page}</h1> */}
 			<div className={styles.user}>
 				<Image
 					className={styles.logo}
@@ -21,7 +21,7 @@ function Header({ page }: { page: string }) {
 					<p className={styles.user_email}>adamsmith@gmail.com</p>
 				</div>
 			</div>
-		</div>
+		</header>
 	);
 }
 

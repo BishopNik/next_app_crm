@@ -3,8 +3,8 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	min-width: 240px;
-	height: 1024px;
+	width: 240px;
+	height: 100vh;
 	background-color: #111827;
 
 	padding-top: 32px;

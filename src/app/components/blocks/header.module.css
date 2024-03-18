@@ -4,8 +4,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	flex: 1;
 	padding: 24px 40px;
+	background-color: inherit;
 	color: #111827;
 	font-family: 'Plus Jakarta Sans';
 	font-style: normal;

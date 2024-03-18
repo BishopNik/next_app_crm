@@ -2,84 +2,63 @@
 
 export const getSummaryStats = () => {
 	return Promise.resolve({
-		promotions: 427,
-		categories: 8,
-		newCompanies: 28,
-		activeCompanies: 670,
+		countPromo: 432,
+		countCategory: 8,
+		countCompany: 28,
+		countActiveCompany: 570,
+	});
+};
+
+export const getCompanyPromo = () => {
+	return Promise.resolve({
+		discountCount: 20,
+		discountSrcImg: 'https://www.coral-print.ru/assets/images/printer-composition.jpg',
+		discountTitle: 'Discount on this product',
+		discountAbout: 'Jorem ipsum dolor sit amet, consectetur adipiscing elit.',
 	});
 };
 
 export const getSummarySales = () => {
-	const items = [];
+	const sales = [];
 	for (let i = 0; i < 6; i++) {
-		items.push({
-			companyId: i + 1,
-			companyTitle: 'Costco Wholesale',
-			sold: 459,
-			income: 600,
+		sales.push({
+			saleId: i + 1,
+			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
+			companyName: 'Costco Wholesale',
+			sold: Math.floor(Math.random() * 1000),
+			income: Math.floor(Math.random() * 1000),
 		});
 	}
 
-	return Promise.resolve(items);
+	return Promise.resolve(sales);
 };
 
 export const getSummaryPromotions = () => {
-	const items = [];
+	const promotions = [];
 	for (let i = 0; i < 7; i++) {
-		items.push({
+		promotions.push({
 			promotionId: i + 1,
-			promotionName: 'Lorem ipsum dolor',
-			companyTitle: 'Costco Wholesale',
-			discount: 40,
+			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
+			companyName: 'Costco Wholesale',
+			promotionName: 'Norem ipsum dolor',
+			countItems: Math.floor(Math.random() * 100),
 		});
 	}
 
-	return Promise.resolve(items);
+	return Promise.resolve(promotions);
 };
 
 export const getSummaryCategories = () => {
-	return Promise.resolve([
-		{
-			categoryId: 1,
-			categoryTitle: 'Products',
-			count: 4,
-		},
-		{
-			categoryId: 2,
-			categoryTitle: 'Products',
-			count: 8,
-		},
-		{
-			categoryId: 3,
-			categoryTitle: 'Products',
-			count: 26,
-		},
-		{
-			categoryId: 4,
-			categoryTitle: 'Products',
-			count: 1,
-		},
-		{
-			categoryId: 5,
-			categoryTitle: 'Products',
-			count: 37,
-		},
-		{
-			categoryId: 6,
-			categoryTitle: 'Products',
-			count: 22,
-		},
-		{
-			categoryId: 7,
-			categoryTitle: 'Products',
-			count: 4,
-		},
-		{
-			categoryId: 8,
-			categoryTitle: 'Products',
-			count: 4,
-		},
-	]);
+	const categories = [];
+	for (let i = 0; i < 8; i++) {
+		categories.push({
+			categoryId: i + 1,
+			groupItems: 'Products',
+			countItems: Math.floor(Math.random() * 1001),
+		});
+	}
+
+	return Promise.resolve(categories);
 };
 
 export const getSummaryCountries = () => {
@@ -111,3 +90,37 @@ export const getSummaryCountries = () => {
 		},
 	]);
 };
+
+export const getSummaryCompanies = () => {
+	const companies = [];
+	for (let i = 0; i < 11; i++) {
+		const company = {
+			companyId: i + 1,
+			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
+			name: 'Costco Wholesale',
+			category: 'product',
+			status: getRandomStatus(),
+			statusPromo: getRandomStatus(),
+			country: 'USA',
+			data: '24.10.2012',
+			description:
+				'Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+		};
+
+		companies.push(company);
+	}
+
+	return Promise.resolve(companies);
+};
+
+function getRandomStatus() {
+	const statuses = ['active', 'not_active', 'suspended', 'pending'] as const;
+	const randomIndex = Math.floor(Math.random() * statuses.length);
+	return statuses[randomIndex];
+}
+
+export function getRandomColor() {
+	const colors = ['#fb923c', '#60a5fa', '#fb7185', '#34d399', '#c084fc', '#1d4ed8'];
+	const randomIndex = Math.floor(Math.random() * colors.length);
+	return colors[randomIndex];
+}

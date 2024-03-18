@@ -9,80 +9,33 @@ import CategoriesCompany from '@/app/components/company/categories_company';
 import TotalInfo from '@/app/components/blocks/total_info';
 import PromotionTable from '@/app/components/promotion/promotion_table';
 import PromotionItems from '@/app/components/promotion/promotion_items';
-import CompanyItem from '@/app/components/company/company_item';
+import CompanyItems from '@/app/components/company/company_item';
 import SalesDetailsTable from '@/app/components/blocks/sales_details_table';
 import SalesDetailsItems from '@/app/components/blocks/sales_details_item';
 import CountriesCompanies from '@/app/components/company/countries_companies';
 import Sidebar from '@/app/components/blocks/sidebar';
 import Header from '@/app/components/blocks/header';
 import FindInput from '@/app/components/blocks/find_input';
-import { getSummaryCountries } from '@/api';
+import {
+	getSummaryCompanies,
+	getSummaryPromotions,
+	getSummaryCategories,
+	getSummaryStats,
+	getCompanyPromo,
+} from '@/api';
 
-export default function Home() {
-	function getRandomStatus() {
-		const statuses = ['active', 'not_active', 'suspended', 'pending'] as const;
-		const randomIndex = Math.floor(Math.random() * statuses.length);
-		return statuses[randomIndex];
-	}
+export async function state() {
+	const companies = await getSummaryCompanies();
+	const categories = await getSummaryCategories();
+	const promotions = await getSummaryPromotions();
+	const count = await getSummaryStats();
+	const companyPromo = await getCompanyPromo();
 
-	const companies = [];
-	for (let i = 0; i < 11; i++) {
-		const company = {
-			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
-			name: 'Costco Wholesale',
-			category: 'product',
-			status: getRandomStatus(),
-			statusPromo: getRandomStatus(),
-			country: 'USA',
-			data: '24.10.2012',
-			description:
-				'Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-		};
+	return { companies, categories, promotions, count, companyPromo };
+}
 
-		companies.push(company);
-	}
-
-	const companyPromo = {
-		discountCount: 20,
-		discountSrcImg: 'https://www.coral-print.ru/assets/images/printer-composition.jpg',
-		discountTitle: 'Discount on this product',
-		discountAbout: 'Jorem ipsum dolor sit amet, consectetur adipiscing elit.',
-	};
-
-	const categories = [];
-	for (let i = 0; i < 8; i++) {
-		categories.push({
-			groupItems: 'Products',
-			countItems: Math.floor(Math.random() * 1001),
-		});
-	}
-
-	const count = {
-		countPromo: 432,
-		countCategory: 8,
-		countCompany: 28,
-		countActiveCompany: 570,
-	};
-
-	const promotions = [];
-	for (let i = 0; i < 7; i++) {
-		promotions.push({
-			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
-			companyName: 'Costco Wholesale',
-			promotionName: 'Norem ipsum dolor',
-			countItems: Math.floor(Math.random() * 100),
-		});
-	}
-
-	const sales = [];
-	for (let i = 0; i < 6; i++) {
-		sales.push({
-			logo: 'https://cdn.shopify.com/shopifycloud/hatchful_web_two/bundles/0d70200090b21d6e0d3fde7eb894b303.png',
-			companyName: 'Costco Wholesale',
-			sold: Math.floor(Math.random() * 1000),
-			income: Math.floor(Math.random() * 1000),
-		});
-	}
+export default async function Home() {
+	const { companies, categories, promotions, count, companyPromo } = await state();
 
 	return (
 		<main
@@ -94,14 +47,14 @@ export default function Home() {
 			}}
 		>
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Dashboard'} />
+				<Sidebar />
 				<div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
-					<Header page={'Dashboard'} />
+					<Header />
 					<TotalInfo count={count} />
 
 					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
 						<SalesDetailsTable>
-							<SalesDetailsItems sales={sales} />
+							<SalesDetailsItems />
 						</SalesDetailsTable>
 						<CategoriesCompany categories={categories} />
 					</div>
@@ -115,9 +68,9 @@ export default function Home() {
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Companies'} />
+				<Sidebar />
 				<div>
-					<Header page={'Companies'} />
+					<Header />
 					<div
 						style={{
 							padding: '32px 40px',
@@ -130,15 +83,15 @@ export default function Home() {
 					</div>
 
 					<CompanyList>
-						<CompanyItem companies={companies} />
+						<CompanyItems companies={companies} />
 					</CompanyList>
 				</div>
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Costco Wholesale'} />
+				<Sidebar />
 				<div>
-					<Header page={'Costco Wholesale'} />
+					<Header />
 					<div
 						style={{
 							padding: '32px 40px',

@@ -6,8 +6,10 @@ import StatusComponent from '@/app/components/blocks/status_component';
 import PromoStatusComponent from '@/app/components/blocks/status_promo';
 import { StatusText } from '../blocks/status_component';
 import styles from './company_item.module.css';
+import { getRandomColor } from '@/api';
 
 export interface Company {
+	companyId: number;
 	logo: string;
 	name: string;
 	category: string;
@@ -18,23 +20,17 @@ export interface Company {
 	description: string;
 }
 
-export type CompanyItemProps = {
+export type CompanyItemsProps = {
 	companies: Company[];
 };
 
-function CompanyItem({ companies }: CompanyItemProps) {
-	function getRandomColor() {
-		const colors = ['#fb923c', '#60a5fa', '#fb7185', '#34d399', '#c084fc', '#1d4ed8'];
-		const randomIndex = Math.floor(Math.random() * colors.length);
-		return colors[randomIndex];
-	}
-
+function CompanyItems({ companies }: CompanyItemsProps) {
 	return (
 		<tbody>
 			{companies.map(
-				({ logo, name, category, status, statusPromo, country, data }, index) => (
-					<>
-						<tr key={index} className={styles.main}>
+				({ companyId, logo, name, category, status, statusPromo, country, data }) => (
+					<React.Fragment key={companyId}>
+						<tr className={styles.main}>
 							<td className={styles.colomn}>
 								<div
 									className={styles.deco}
@@ -44,14 +40,16 @@ function CompanyItem({ companies }: CompanyItemProps) {
 							</td>
 
 							<td className={styles.colomn}>
-								<Image
-									className={styles.logo}
-									src={logo}
-									alt='Company logo'
-									width={80}
-									height={80}
-								/>
-								<span className={styles.a}>{name}</span>
+								<a href={`/companies/${companyId}`}>
+									<Image
+										className={styles.logo}
+										src={logo}
+										alt='Company logo'
+										width={80}
+										height={80}
+									/>
+									<span className={styles.a}>{name}</span>
+								</a>
 							</td>
 							<td className={styles.colomn}>
 								<StatusComponent type={status} />
@@ -63,11 +61,11 @@ function CompanyItem({ companies }: CompanyItemProps) {
 							<td className={styles.colomn}>{data}</td>
 						</tr>
 						<tr className={styles.space}></tr>
-					</>
+					</React.Fragment>
 				)
 			)}
 		</tbody>
 	);
 }
 
-export default CompanyItem;
+export default CompanyItems;

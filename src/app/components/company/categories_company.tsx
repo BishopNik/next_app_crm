@@ -14,9 +14,9 @@ function CategoriesCompany({ categories }: CategoriesCompanyProps) {
 		<div className={styles.main}>
 			<p className={styles.title}>Categories of companies</p>
 			<ul className={styles.list}>
-				{categories.map((category, index) => (
-					<li key={index}>
-						<CategoryBlock data={category} ext={index % 2 === 0} />
+				{categories.map(category => (
+					<li key={category.categoryId}>
+						<CategoryBlock data={category} ext={category.categoryId % 2 !== 0} />
 					</li>
 				))}
 			</ul>

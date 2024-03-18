@@ -4,8 +4,7 @@
 
 import React from 'react';
 import { Formik, Form } from 'formik';
-import InputField from '@/app/components/blocks/input-field';
-import SearchSVG from '../../icon/search-icon';
+import SearchSVG from '@/app/icon/search-icon';
 import styles from './find_input.module.css';
 
 const initialValues: { search: string } = {
