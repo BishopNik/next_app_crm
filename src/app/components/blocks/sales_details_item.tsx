@@ -3,9 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './sales_details.module.css';
 import clsx from 'clsx';
-import { getSummarySales } from '@/api';
 
-interface Sales {
+interface Sale {
 	saleId: number;
 	logo: string;
 	companyName: string;
@@ -13,9 +12,11 @@ interface Sales {
 	income: number;
 }
 
-async function SalesDetailsItems() {
-	const sales: Sales[] = await getSummarySales();
+interface SalesProps {
+	sales: Sale[];
+}
 
+async function SalesDetailsItems({ sales }: SalesProps) {
 	return (
 		<tbody>
 			{sales.map(({ saleId, logo, companyName, sold, income }) => (

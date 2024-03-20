@@ -2,24 +2,16 @@
 
 import React from 'react';
 import Sidebar from '@/app/components/blocks/sidebar';
-import Header from '@/app/components/blocks/header';
 
-export default function Layout({
-	children,
-}: Readonly<{
+interface LayoutProps {
 	children: React.ReactNode;
-}>) {
+}
+
+export default function Layout({ children }: Readonly<LayoutProps>) {
 	return (
 		<>
 			<Sidebar />
-			<main
-				style={{
-					display: 'flex',
-					alignItems: 'flex-start',
-				}}
-			>
-				{children}
-			</main>
+			{children}
 		</>
 	);
 }

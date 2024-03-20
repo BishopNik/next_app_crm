@@ -18,12 +18,13 @@ function ErrorCom({ error, reset }: ErrorComProps) {
 				alignItems: 'center',
 				flexDirection: 'column',
 				gap: '20px',
-				width: '1200px',
+				maxWidth: '1200px',
+				flex: '1',
 			}}
 		>
 			<p
 				style={{
-					padding: '40px',
+					padding: '40px 0',
 				}}
 			>{`Error... ${error.message}`}</p>
 			<Button style={{ width: '200px' }} onClick={() => reset()}>

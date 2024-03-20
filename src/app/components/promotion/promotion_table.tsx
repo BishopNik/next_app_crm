@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 function PromotionTable({ children }: { children: ReactNode }) {
 	return (
-		<div className={styles.main}>
+		<li className={styles.main}>
 			<p className={styles.title}>Promotions</p>
 			<table>
 				<thead className={styles.table}>
@@ -17,7 +17,7 @@ function PromotionTable({ children }: { children: ReactNode }) {
 				</thead>
 				{children}
 			</table>
-		</div>
+		</li>
 	);
 }
 
