@@ -39,22 +39,15 @@
 	display: flex;
 	align-items: center;
 	gap: 14px;
+	height: 36px;
 }
 
-.active {
+.menu_item_link.current::after {
+	content: '';
 	width: 4px;
 	height: 36px;
 	border-radius: 2px;
 	background-color: #e9d5ff;
-	margin-left: auto;
-	margin-right: 4px;
-}
-
-.not_active {
-	width: 4px;
-	height: 36px;
-	border-radius: 2px;
-	background-color: transparent;
 	margin-left: auto;
 	margin-right: 4px;
 }

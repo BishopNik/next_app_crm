@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './promo_detail.module.css';
 
-interface PromoDetailsProps {
+export interface PromoDetailsProps {
 	companyPromo: {
 		discountCount: number;
 		discountSrcImg: string;

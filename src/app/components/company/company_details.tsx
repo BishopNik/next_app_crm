@@ -4,9 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import StatusComponent from '@/app/components/blocks/status_component';
 import styles from './company_details.module.css';
-import { Company } from './company_item';
+import { CompanyItem } from './company_item';
 
-function CompanyDetails({ company }: { company: Company }) {
+function CompanyDetails({ company }: { company: CompanyItem }) {
 	const { logo, name, description, status, data, category, country } = company;
 
 	return (

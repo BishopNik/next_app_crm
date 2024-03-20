@@ -6,7 +6,7 @@ import React from 'react';
 import styles from './promotion-form.module.css';
 import InputField from '../blocks/input-field';
 import UploadField from '../blocks/upload-field';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import Button from '../button/button';
 
 interface PromotionFormProps {
@@ -28,7 +28,10 @@ const initialValues: PromotionFieldValues = {
 };
 
 function PromotionForm({ onClose }: PromotionFormProps) {
-	const handleSubmit = (data, action): void => {
+	const handleSubmit = (
+		data: PromotionFieldValues,
+		action: FormikHelpers<PromotionFieldValues>
+	): void => {
 		console.log(data);
 		action.resetForm();
 		onClose();

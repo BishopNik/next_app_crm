@@ -6,7 +6,7 @@ import React from 'react';
 import styles from './company-form.module.css';
 import InputField from '../blocks/input-field';
 import UploadField from '../blocks/upload-field';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
 import Button from '../button/button';
 import { StatusText } from '../blocks/status_component';
 
@@ -35,7 +35,10 @@ const initialValues: CompanyFieldValues = {
 };
 
 function CompanyForm({ onClose }: CompanyFormProps) {
-	const handleSubmit = (data, action): void => {
+	const handleSubmit = (
+		data: CompanyFieldValues,
+		action: FormikHelpers<CompanyFieldValues>
+	): void => {
 		console.log(data);
 		action.resetForm();
 		onClose();

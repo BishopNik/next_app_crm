@@ -12,17 +12,14 @@ export default function Layout({
 	return (
 		<>
 			<Sidebar />
-			<div>
-				<Header />
-				<main
-					style={{
-						display: 'flex',
-						alignItems: 'flex-start',
-					}}
-				>
-					{children}
-				</main>
-			</div>
+			<main
+				style={{
+					display: 'flex',
+					alignItems: 'flex-start',
+				}}
+			>
+				{children}
+			</main>
 		</>
 	);
 }

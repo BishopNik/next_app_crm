@@ -1,14 +1,23 @@
 /** @format */
 
+'use client';
+
 import React from 'react';
+import SidebarItem from '@/app/components/blocks/sidebar_item';
 import styles from './sidebar.module.css';
 import LogoSVG from '@/app/icon/logo-icon';
 import ExitSVG from '@/app/icon/exit-icon';
 import DashboardSVG from '@/app/icon/dashboard-icon';
 import CompaniesSVG from '@/app/icon/companies-icon';
+import { useRouter } from 'next/navigation';
 
 function Sidebar() {
-	const link = 'Dashboard';
+	const router = useRouter();
+
+	const handleExitClick = () => {
+		router.push('/');
+	};
+
 	return (
 		<aside className={styles.main}>
 			<div className={styles.logo}>
@@ -16,34 +25,16 @@ function Sidebar() {
 			</div>
 
 			<ul className={styles.menu}>
-				<li className={styles.menu_item}>
-					<a className={styles.menu_item_link} href='/dashboard'>
-						<span>
-							<DashboardSVG />
-						</span>
-						<span>Dashboard</span>
-						<span
-							className={link === 'Dashboard' ? styles.active : styles.not_active}
-						></span>
-					</a>
-				</li>
-				<li className={styles.menu_item}>
-					<a className={styles.menu_item_link} href='/companies'>
-						<span>
-							<CompaniesSVG />
-						</span>
-						<span>Companies</span>
-						<span
-							className={link === 'Companies' ? styles.active : styles.not_active}
-						></span>
-					</a>
-				</li>
+				<SidebarItem pathname={'/dashboard'} icon={<DashboardSVG />}>
+					Dashboard
+				</SidebarItem>
+				<SidebarItem pathname={'/companies'} icon={<CompaniesSVG />}>
+					Companies
+				</SidebarItem>
 			</ul>
 
-			<div className={styles.exit_block}>
-				<span>
-					<ExitSVG />
-				</span>
+			<div className={styles.exit_block} onClick={handleExitClick}>
+				<ExitSVG />
 				<span>Exit</span>
 			</div>
 		</aside>

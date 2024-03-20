@@ -47,9 +47,9 @@ export default async function Home() {
 			}}
 		>
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar />
+				<Sidebar link={'Dashboard'} />
 				<div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
-					<Header />
+					<Header page={'Dashboard'} />
 					<TotalInfo count={count} />
 
 					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
@@ -68,9 +68,9 @@ export default async function Home() {
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar />
+				<Sidebar link={'Companies'} />
 				<div>
-					<Header />
+					<Header page={'Companies'} />
 					<div
 						style={{
 							padding: '32px 40px',
@@ -89,9 +89,9 @@ export default async function Home() {
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar />
+				<Sidebar link={'Costco Wholesale'} />
 				<div>
-					<Header />
+					<Header page={'Costco Wholesale'} />
 					<div
 						style={{
 							padding: '32px 40px',

@@ -8,12 +8,14 @@ import SalesDetailsTable from '@/app/components/blocks/sales_details_table';
 import SalesDetailsItems from '@/app/components/blocks/sales_details_item';
 import CountriesCompanies from '@/app/components/company/countries_companies';
 import { state } from '@/app/page';
+import Header from '@/app/components/blocks/header';
 
 export default async function Dashboard() {
 	const { categories, promotions, count } = await state();
 
 	return (
 		<div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
+			<Header>Dashboard</Header>
 			<TotalInfo count={count} />
 
 			<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>

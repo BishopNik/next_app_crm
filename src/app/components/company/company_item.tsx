@@ -8,7 +8,7 @@ import { StatusText } from '../blocks/status_component';
 import styles from './company_item.module.css';
 import { getRandomColor } from '@/api';
 
-export interface Company {
+export interface CompanyItem {
 	companyId: number;
 	logo: string;
 	name: string;
@@ -21,7 +21,7 @@ export interface Company {
 }
 
 export type CompanyItemsProps = {
-	companies: Company[];
+	companies: CompanyItem[];
 };
 
 function CompanyItems({ companies }: CompanyItemsProps) {

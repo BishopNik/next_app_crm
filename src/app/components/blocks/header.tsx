@@ -4,10 +4,14 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './header.module.css';
 
-function Header() {
+interface HeaderProps {
+	children: React.ReactNode;
+}
+
+function Header({ children }: HeaderProps) {
 	return (
 		<header className={styles.main}>
-			{/* <h1 className={styles.page}>{page}</h1> */}
+			<h1 className={styles.page}>{children}</h1>
 			<div className={styles.user}>
 				<Image
 					className={styles.logo}
