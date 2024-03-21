@@ -8,7 +8,7 @@ import styles from '../company/company-form.module.css';
 import CloseSVG from '../../icon/close-icon';
 
 export interface ModalProps {
-	show: boolean;
+	show?: boolean;
 	children?: ReactNode;
 	onClose: () => void;
 }

@@ -1,7 +1,9 @@
 /** @format */
 
-.main {
+.main_child {
+	width: 1200px;
+	height: calc(100vh - 201px);
+	border-radius: 4px;
 	padding: 32px 40px;
-	display: flex;
-	justify-content: space-between;
+	overflow: scroll;
 }

@@ -7,6 +7,7 @@ import styles from './company-form.module.css';
 import InputField from '../blocks/input-field';
 import UploadField from '../blocks/upload-field';
 import { Formik, Form, FormikHelpers } from 'formik';
+import clsx from 'clsx';
 import Button from '../button/button';
 import { StatusText } from '../blocks/status_component';
 
@@ -50,10 +51,10 @@ function CompanyForm({ onClose }: CompanyFormProps) {
 		<Formik initialValues={initialValues} onSubmit={handleSubmit}>
 			<Form className={styles.form}>
 				<p className={styles.title}>Add new company</p>
-				<div className={styles.flex_field}>
-					<div className={styles.flex_field_sup}>
+				<ul className={styles.flex_field}>
+					<li className={clsx(styles.flex_field_sup, styles.add)}>
 						<UploadField required label='Logo' name='logo' id='logo' />
-						<div className={styles.flex_field_col}>
+						<div className={clsx(styles.flex_field_col, styles.add)}>
 							<InputField
 								required
 								label='Status'
@@ -81,8 +82,8 @@ function CompanyForm({ onClose }: CompanyFormProps) {
 								</option>
 							</InputField>
 						</div>
-					</div>
-					<div className={styles.flex_field_col}>
+					</li>
+					<li className={styles.flex_field_col}>
 						<InputField
 							required
 							label='Name'
@@ -121,8 +122,8 @@ function CompanyForm({ onClose }: CompanyFormProps) {
 							id='description'
 							autoComplete='off'
 						/>
-					</div>
-				</div>
+					</li>
+				</ul>
 
 				<Button style={{ width: '100%' }} type='submit'>
 					Add company

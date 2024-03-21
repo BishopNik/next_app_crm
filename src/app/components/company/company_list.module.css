@@ -1,14 +1,5 @@
 /** @format */
 
-.main {
-	background-color: #f3f4f6;
-	width: 1200px;
-	height: calc(100vh - 201px);
-	border-radius: 4px;
-	padding: 32px 40px;
-	overflow: scroll;
-}
-
 .table {
 	width: 100%;
 }

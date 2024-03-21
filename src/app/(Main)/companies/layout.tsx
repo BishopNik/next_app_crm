@@ -7,14 +7,16 @@ export interface LayoutProps {
 	children: React.ReactNode;
 	header: React.ReactNode;
 	toolbar: React.ReactNode;
+	modal: React.ReactNode;
 }
 
-function Layout({ children, toolbar, header }: LayoutProps) {
+function Layout({ children, toolbar, header, modal }: LayoutProps) {
 	return (
 		<div>
+			{modal}
 			{header}
-			<div className={styles.main}>{toolbar}</div>
-			{children}
+			{toolbar}
+			<div className={styles.main_child}>{children}</div>
 		</div>
 	);
 }

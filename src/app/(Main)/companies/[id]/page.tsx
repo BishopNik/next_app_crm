@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import CompanyDetails from '@/app/components/company/company_details';
 import PromoDetails from '@/app/components/promotion/promo_detail';
-import { state } from '@/app/page';
+import { getSummaryCompanies, getCompanyPromo } from '@/api';
 import { CompanyItem } from '@/app/components/company/company_item';
 import { PromoDetailsProps } from '@/app/components/promotion/promo_detail';
 
@@ -20,7 +20,8 @@ export default function Company({ params: { id } }: CompanyProps) {
 
 	useEffect(() => {
 		async function fetchData() {
-			const { companies, companyPromo } = await state();
+			const companies = await getSummaryCompanies();
+			const companyPromo = await getCompanyPromo();
 			setCompanies(companies);
 			setCompanyPromoState({ companyPromo });
 		}

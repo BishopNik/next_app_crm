@@ -10,11 +10,8 @@ import TotalInfo from '@/app/components/blocks/_total_info';
 import PromotionTable from '@/app/components/promotion/promotion_table';
 import PromotionItems from '@/app/components/promotion/promotion_items';
 import CompanyItems from '@/app/components/company/company_item';
-import SalesDetailsTable from '@/app/components/blocks/sales_details_table';
-import SalesDetailsItems from '@/app/components/blocks/sales_details_item';
 import CountriesCompanies from '@/app/components/company/_countries_companies';
 import Sidebar from '@/app/components/blocks/sidebar';
-import Header from '@/app/components/blocks/header';
 import FindInput from '@/app/components/blocks/find_input';
 import {
 	getSummaryCompanies,
@@ -24,18 +21,12 @@ import {
 	getCompanyPromo,
 } from '@/api';
 
-export async function state() {
+export default async function Home() {
 	const companies = await getSummaryCompanies();
 	const categories = await getSummaryCategories();
 	const promotions = await getSummaryPromotions();
 	const count = await getSummaryStats();
 	const companyPromo = await getCompanyPromo();
-
-	return { companies, categories, promotions, count, companyPromo };
-}
-
-export default async function Home() {
-	const { companies, categories, promotions, count, companyPromo } = await state();
 
 	return (
 		<main
@@ -47,15 +38,11 @@ export default async function Home() {
 			}}
 		>
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Dashboard'} />
+				<Sidebar />
 				<div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
-					<Header page={'Dashboard'} />
 					<TotalInfo count={count} />
 
 					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
-						<SalesDetailsTable>
-							<SalesDetailsItems />
-						</SalesDetailsTable>
 						<CategoriesCompany categories={categories} />
 					</div>
 					<div style={{ display: 'flex', paddingLeft: '40px', gap: '20px' }}>
@@ -68,9 +55,8 @@ export default async function Home() {
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Companies'} />
+				<Sidebar />
 				<div>
-					<Header page={'Companies'} />
 					<div
 						style={{
 							padding: '32px 40px',
@@ -89,9 +75,8 @@ export default async function Home() {
 			</div>
 
 			<div style={{ display: 'flex', alignItems: 'flex-start' }}>
-				<Sidebar link={'Costco Wholesale'} />
+				<Sidebar />
 				<div>
-					<Header page={'Costco Wholesale'} />
 					<div
 						style={{
 							padding: '32px 40px',
