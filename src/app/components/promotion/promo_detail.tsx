@@ -4,34 +4,38 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './promo_detail.module.css';
 
-export interface PromoDetailsProps {
-	companyPromo: {
-		discountCount: number;
-		discountSrcImg: string;
-		discountTitle: string;
-		discountAbout: string;
-	};
+export interface CompanyPromo {
+	title: string;
+	description: string;
+	discount: number;
+	companyId: string;
+	companyTitle: string;
+	id: string;
+}
+
+interface PromoDetailsProps {
+	companyPromo: CompanyPromo;
 }
 
 function PromoDetails({ companyPromo }: PromoDetailsProps) {
-	const { discountCount, discountSrcImg, discountTitle, discountAbout } = companyPromo;
+	const { discount, title, description } = companyPromo;
 
 	return (
 		<li className={styles.main}>
 			<div className={styles.image}>
 				<div className={styles.discount}></div>
-				<span className={styles.discountText}>-{discountCount} %</span>
+				<span className={styles.discountText}>-{discount} %</span>
 				<Image
 					className={styles.img}
-					src={discountSrcImg}
+					src={'https://www.coral-print.ru/assets/images/printer-composition.jpg'}
 					alt='Promo product'
 					width={268}
 					height={160}
 				/>
 			</div>
 			<div className={styles.text}>
-				<p className={styles.title}>{discountTitle}</p>
-				<span className={styles.about}>{discountAbout}</span>
+				<p className={styles.title}>{title}</p>
+				<span className={styles.about}>{description}</span>
 			</div>
 		</li>
 	);

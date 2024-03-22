@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Button from '@/app/components/button/button';
+import styles from './layout.module.css';
 
 interface ErrorComProps {
 	error: Error;
@@ -12,16 +13,7 @@ interface ErrorComProps {
 
 function ErrorCom({ error, reset }: ErrorComProps) {
 	return (
-		<div
-			style={{
-				display: 'flex',
-				alignItems: 'center',
-				flexDirection: 'column',
-				gap: '20px',
-				maxWidth: '1200px',
-				flex: '1',
-			}}
-		>
+		<div className={styles.error_main}>
 			<p
 				style={{
 					padding: '40px 0',

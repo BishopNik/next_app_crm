@@ -6,33 +6,34 @@ import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import CompanyDetails from '@/app/components/company/company_details';
 import PromoDetails from '@/app/components/promotion/promo_detail';
-import { getSummaryCompanies, getCompanyPromo } from '@/api';
 import { CompanyItem } from '@/app/components/company/company_item';
-import { PromoDetailsProps } from '@/app/components/promotion/promo_detail';
+import { CompanyPromo } from '@/app/components/promotion/promo_detail';
+import { getCompany, getPromotions } from '@/lib/api';
 
 export interface CompanyProps {
 	params: { id: string };
 }
 
 export default function Company({ params: { id } }: CompanyProps) {
-	const [companies, setCompanies] = useState<CompanyItem[] | null>(null);
-	const [companyPromoState, setCompanyPromoState] = useState<PromoDetailsProps | null>(null);
+	const [company, setCompany] = useState<CompanyItem | null>(null);
+	const [promo, setPromo] = useState<CompanyPromo[] | null>(null);
 
 	useEffect(() => {
 		async function fetchData() {
-			const companies = await getSummaryCompanies();
-			const companyPromo = await getCompanyPromo();
-			setCompanies(companies);
-			setCompanyPromoState({ companyPromo });
+			const company = await getCompany(id);
+			const promo = await getPromotions({ companyId: company.id });
+			setCompany(company);
+			setPromo(promo);
+
+			if (company === null) notFound();
 		}
 
 		fetchData();
-	}, []);
+	}, [id]);
 
 	useEffect(() => {
 		if (isNaN(parseInt(id))) notFound();
-		if (companies !== null && !companies[Number(id)]) notFound();
-	}, [companies, id]);
+	}, [id]);
 
 	return (
 		<div
@@ -45,15 +46,10 @@ export default function Company({ params: { id } }: CompanyProps) {
 				overflow: 'scroll',
 			}}
 		>
-			{companies !== null && companies?.length >= Number(id) && (
-				<CompanyDetails company={companies[Number(id)]} />
-			)}
+			{company !== null && <CompanyDetails company={company} />}
 
 			<ul style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-				{companyPromoState &&
-					Array.from({ length: 6 }).map((_, index) => (
-						<PromoDetails key={index} companyPromo={companyPromoState.companyPromo} />
-					))}
+				{promo && promo.map(p => <PromoDetails key={p.id} companyPromo={p} />)}
 			</ul>
 		</div>
 	);

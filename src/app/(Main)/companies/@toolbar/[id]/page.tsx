@@ -1,7 +1,5 @@
 /** @format */
 
-'use client';
-
 import FindInput from '@/app/components/blocks/find_input';
 import AddPromotionCompany from '@/app/components/button/add_button_promotion';
 import styles from '../page.module.css';

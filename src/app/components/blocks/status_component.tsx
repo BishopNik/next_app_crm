@@ -13,7 +13,7 @@ export enum StatusText {
 }
 
 export interface StatusComponentProps {
-	type: keyof typeof StatusText;
+	type: string;
 	disabled?: boolean;
 }
 
@@ -21,7 +21,7 @@ function StatusComponent({ type, disabled }: StatusComponentProps) {
 	return (
 		<div className={clsx(main.main_label, styles[type], disabled && main.disabled)}>
 			<span className={main.boolet}></span>
-			<span className={main.button_text}>{StatusText[type]}</span>
+			<span className={main.button_text}>{StatusText[type as keyof typeof StatusText]}</span>
 		</div>
 	);
 }

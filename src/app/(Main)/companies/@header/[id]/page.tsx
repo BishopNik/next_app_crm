@@ -1,7 +1,5 @@
 /** @format */
 
-'use client';
-
 import Header from '@/app/components/blocks/header';
 
 export interface HeaderComProps {}
