@@ -12,7 +12,7 @@ export interface LayoutProps {
 
 function Layout({ children, toolbar, header, modal }: LayoutProps) {
 	return (
-		<div>
+		<div style={{ overflow: 'scroll', height: '100vh' }}>
 			{modal}
 			{header}
 			{toolbar}

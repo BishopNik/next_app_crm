@@ -1,5 +1,12 @@
 /** @format */
 
+.container {
+	width: 100%;
+	height: 100%;
+	padding: 32px 40px;
+	background-color: #f3f4f6;
+}
+
 .table {
 	background-color: #f3f4f6;
 	width: 100%;

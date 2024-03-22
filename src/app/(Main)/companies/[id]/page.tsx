@@ -17,19 +17,29 @@ export interface CompanyProps {
 export default function Company({ params: { id } }: CompanyProps) {
 	const [company, setCompany] = useState<CompanyItem | null>(null);
 	const [promo, setPromo] = useState<CompanyPromo[] | null>(null);
+	const [error, setError] = useState<boolean>(false);
 
 	useEffect(() => {
 		async function fetchData() {
 			const company = await getCompany(id);
-			const promo = await getPromotions({ companyId: company.id });
+			if (!company) {
+				setError(true);
+				return;
+			}
 			setCompany(company);
+			const promo = await getPromotions({ companyId: company.id });
 			setPromo(promo);
-
-			if (company === null) notFound();
 		}
 
 		fetchData();
 	}, [id]);
+
+	useEffect(() => {
+		if (error) {
+			setError(false);
+			notFound();
+		}
+	}, [error]);
 
 	useEffect(() => {
 		if (isNaN(parseInt(id))) notFound();
@@ -42,8 +52,7 @@ export default function Company({ params: { id } }: CompanyProps) {
 				gap: '20px',
 				paddingLeft: '40px',
 				width: '1200px',
-				height: 'calc(100vh - 201px)',
-				overflow: 'scroll',
+				marginTop: '8px',
 			}}
 		>
 			{company !== null && <CompanyDetails company={company} />}

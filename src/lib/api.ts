@@ -65,12 +65,16 @@ const stringifyQueryParams = (params: Record<string, string>) =>
 	new URLSearchParams(params).toString();
 
 const sendRequest = async <T>(url: string, init?: RequestInit) => {
-	const res = await fetch(url, init);
-	if (!res.ok) {
-		throw new Error(await res.text());
-	}
+	try {
+		const res = await fetch(url, init);
+		if (!res.ok) {
+			throw new Error(await res.text());
+		}
 
-	return (await res.json()) as T;
+		return (await res.json()) as T;
+	} catch (_) {
+		return null;
+	}
 };
 
 export const getSummaryStats = (init?: RequestInit) => {
