@@ -2,7 +2,7 @@
 
 import SalesDetailsTable from '@/app/components/blocks/sales_details_table';
 import SalesDetailsItems from '@/app/components/blocks/sales_details_item';
-import { getSummarySales } from '@/api';
+import { getSummarySales } from '@/lib/api';
 
 export interface PageProps {}
 

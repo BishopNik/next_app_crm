@@ -1,42 +1,38 @@
 /** @format */
 
 import styles from '@/app/components/blocks/total_info.module.css';
-import { getSummaryStats } from '@/api';
+import { getSummaryStats } from '@/lib/api';
 
 export interface CompaniesProps {}
 
-type TotalInfoProps = {
-	countPromo: number;
-	countCategory: number;
-	countCompany: number;
-	countActiveCompany: number;
-};
-
 export default async function Companies({}: CompaniesProps) {
-	const count: TotalInfoProps = await getSummaryStats();
-	const { countPromo, countCategory, countCompany, countActiveCompany } = count;
+	const { promotions, categories, newCompanies, activeCompanies } = await getSummaryStats({
+		next: {
+			revalidate: 5,
+		},
+	});
 
 	return (
 		<ul className={styles.main}>
 			<li className={styles.item}>
 				<div className={styles.line}></div>
 				<span className={styles.title}>Total promotions</span>
-				<p className={styles.count}>{countPromo}</p>
+				<p className={styles.count}>{promotions}</p>
 			</li>
 			<li className={styles.item}>
 				<div className={styles.line}></div>
 				<span className={styles.title}>Total category</span>
-				<p className={styles.count}>{countCategory}</p>
+				<p className={styles.count}>{categories}</p>
 			</li>
 			<li className={styles.item}>
 				<div className={styles.line}></div>
 				<span className={styles.title}>New companies</span>
-				<p className={styles.count}>{countCompany}</p>
+				<p className={styles.count}>{newCompanies}</p>
 			</li>
 			<li className={styles.item}>
 				<div className={styles.line}></div>
 				<span className={styles.title}>Total active companies</span>
-				<p className={styles.count}>{countActiveCompany}</p>
+				<p className={styles.count}>{activeCompanies}</p>
 			</li>
 		</ul>
 	);

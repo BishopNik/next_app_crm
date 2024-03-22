@@ -6,7 +6,7 @@ import StatusComponent from '@/app/components/blocks/status_component';
 import PromoStatusComponent from '@/app/components/blocks/status_promo';
 import { StatusText } from '../blocks/status_component';
 import styles from './company_item.module.css';
-import { getRandomColor } from '@/api';
+import { getRandomColor } from '@/lib/utils';
 
 export interface CompanyItem {
 	companyId: number;

@@ -21,7 +21,7 @@ function SidebarItem({ pathname, icon, children }: SidebarItemProps) {
 		<li className={styles.menu_item}>
 			<Link
 				className={clsx(styles.menu_item_link, page === pathname && styles.current)}
-				href={pathname}
+				href={pathname || '/'}
 			>
 				{icon}
 				<span>{children}</span>

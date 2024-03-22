@@ -1,18 +1,30 @@
 /** @format */
 
 import styles from '@/app/components/company/countries_companies.module.css';
-import { getSummaryCountries } from '@/api';
+import { getCompanies, getCountries } from '@/lib/api';
+import { count } from '@/lib/utils';
 
 export interface CountriesProps {}
 
 interface ItemCountry {
-	countryId: number;
+	countryId: string;
 	countryTitle: string;
 	count: number;
 }
 
 export default async function Countries({}: CountriesProps) {
-	const data: ItemCountry[] = await getSummaryCountries();
+	const companies = await getCompanies();
+	const countries = await getCountries();
+	const counts = count(companies, 'countryId');
+
+	const data: ItemCountry[] = countries
+		.map(i => ({
+			countryId: i.id,
+			countryTitle: i.title,
+			count: counts[i.id],
+		}))
+		.sort((a, b) => b.count - a.count);
+
 	return (
 		<li className={styles.main}>
 			<div className={styles.world}></div>
