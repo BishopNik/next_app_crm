@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import CompanyDetails from '@/app/components/company/company_details';
 import PromoDetails from '@/app/components/promotion/promo_detail';
-import { CompanyItem } from '@/app/components/company/company_item';
+import { CompanyItem } from '@/app/components/company/company_items';
 import { getCompany, getPromotions } from '@/lib/api';
 import { getQueryClient } from '@/lib/utils';
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';

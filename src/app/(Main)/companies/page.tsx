@@ -1,7 +1,7 @@
 /** @format */
 
 import CompanyList from '@/app/components/company/company_list';
-import CompanyItems from '@/app/components/company/company_item';
+import CompanyItems from '@/app/components/company/company_items';
 import { getCompanies } from '@/lib/api';
 import { getQueryClient } from '@/lib/utils';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';

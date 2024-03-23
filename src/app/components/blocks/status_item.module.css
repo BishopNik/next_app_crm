@@ -1,0 +1,17 @@
+/** @format */
+
+.active {
+	background-color: #15803d;
+}
+
+.not_active {
+	background-color: #b91c1c;
+}
+
+.pending {
+	background-color: #c2410c;
+}
+
+.suspended {
+	background-color: #1d4ed8;
+}

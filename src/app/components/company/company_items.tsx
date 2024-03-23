@@ -4,10 +4,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import clsx from 'clsx';
 import StatusComponent from '@/app/components/blocks/status_component';
 import PromoStatusComponent from '@/app/components/blocks/status_promo';
-import styles from './company_item.module.css';
-import { getRandomColor } from '@/lib/utils';
+import styles from './company_items.module.css';
+import statusCSS from '../blocks/status_item.module.css';
 import { getCompanies } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 
@@ -49,10 +50,7 @@ function CompanyItems({}: CompanyItemsProps) {
 						<React.Fragment key={id}>
 							<tr className={styles.main}>
 								<td className={styles.colomn}>
-									<div
-										className={styles.deco}
-										style={{ backgroundColor: getRandomColor() }}
-									></div>
+									<div className={clsx(styles.deco, statusCSS[status])}></div>
 									<span className={styles.product}>{categoryTitle}</span>
 								</td>
 
