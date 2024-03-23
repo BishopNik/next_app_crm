@@ -8,10 +8,11 @@ export interface PromotionsProps {}
 
 export default async function Promotions({}: PromotionsProps) {
 	const promotions = await getPromotions();
+	const promo = promotions?.slice(0, 6) || null;
 
 	return (
 		<PromotionTable>
-			<PromotionItems promotions={promotions.slice(0, 6)} />
+			<PromotionItems promotions={promo} />
 		</PromotionTable>
 	);
 }

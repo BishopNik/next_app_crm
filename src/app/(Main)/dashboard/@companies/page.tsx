@@ -6,11 +6,15 @@ import { getSummaryStats } from '@/lib/api';
 export interface CompaniesProps {}
 
 export default async function Companies({}: CompaniesProps) {
-	const { promotions, categories, newCompanies, activeCompanies } = await getSummaryStats({
+	const stats = await getSummaryStats({
 		next: {
 			revalidate: 5,
 		},
 	});
+
+	if (!stats) return null;
+
+	const { promotions, categories, newCompanies, activeCompanies } = stats;
 
 	return (
 		<ul className={styles.main}>

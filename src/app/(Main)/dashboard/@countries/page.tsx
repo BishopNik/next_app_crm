@@ -15,15 +15,18 @@ interface ItemCountry {
 export default async function Countries({}: CountriesProps) {
 	const companies = await getCompanies();
 	const countries = await getCountries();
-	const counts = count(companies, 'countryId');
+
+	const counts = companies ? count(companies, 'countryId') : {};
 
 	const data: ItemCountry[] = countries
-		.map(i => ({
-			countryId: i.id,
-			countryTitle: i.title,
-			count: counts[i.id],
-		}))
-		.sort((a, b) => b.count - a.count);
+		? countries
+				.map(i => ({
+					countryId: i.id,
+					countryTitle: i.title,
+					count: counts[i.id],
+				}))
+				.sort((a, b) => b.count - a.count)
+		: [];
 
 	return (
 		<li className={styles.main}>
