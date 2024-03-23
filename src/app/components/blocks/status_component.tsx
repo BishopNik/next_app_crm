@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import styles from './status.module.css';
 import main from './main-status.module.css';
 
-enum StatusText {
+export enum StatusText {
 	active = 'Active',
 	not_active = 'Not active',
 	pending = 'Pending',
