@@ -1,14 +1,28 @@
 /** @format */
 
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query';
 import StatusComponent from '@/app/components/blocks/status_component';
 import styles from './company_details.module.css';
-import { CompanyItem } from './company_item';
+import { getCompany } from '@/lib/api';
 
-function CompanyDetails({ company }: { company: CompanyItem }) {
-	const { title, categoryTitle, status, hasPromotions, countryTitle, joinedDate, description } =
-		company;
+interface CompanyDetails {
+	companyId: string;
+}
+
+function CompanyDetails({ companyId }: CompanyDetails) {
+	const { data: company } = useQuery({
+		queryKey: ['company'],
+		queryFn: () => getCompany(companyId),
+		staleTime: 10 * 1000,
+	});
+
+	if (!company) return null;
+
+	const { title, categoryTitle, status, countryTitle, joinedDate, description } = company;
 
 	return (
 		<div className={styles.main}>

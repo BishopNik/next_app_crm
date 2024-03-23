@@ -1,11 +1,15 @@
 /** @format */
 
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import StatusComponent from '@/app/components/blocks/status_component';
 import PromoStatusComponent from '@/app/components/blocks/status_promo';
 import styles from './company_item.module.css';
 import { getRandomColor } from '@/lib/utils';
+import { getCompanies } from '@/lib/api';
+import { useQuery } from '@tanstack/react-query';
 
 export interface CompanyItem {
 	id: string;
@@ -20,11 +24,15 @@ export interface CompanyItem {
 	description: string;
 }
 
-export type CompanyItemsProps = {
-	companies: CompanyItem[] | null;
-};
+export type CompanyItemsProps = {};
 
-function CompanyItems({ companies }: CompanyItemsProps) {
+function CompanyItems({}: CompanyItemsProps) {
+	const { data: companies } = useQuery({
+		queryKey: ['companies'],
+		queryFn: () => getCompanies(),
+		staleTime: 10 * 1000,
+	});
+
 	return (
 		<tbody>
 			{companies &&
