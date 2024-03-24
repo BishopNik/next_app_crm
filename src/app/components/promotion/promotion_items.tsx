@@ -3,15 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './promotion_table.module.css';
 import clsx from 'clsx';
-
-interface Promotion {
-	description: string;
-	companyId: string;
-	id: string;
-	companyTitle: string;
-	title: string;
-	discount: number;
-}
+import { Promotion } from '@/lib/api';
 
 interface PromotionItemsProps {
 	promotions: Promotion[] | null;

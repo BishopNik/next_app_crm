@@ -8,15 +8,6 @@ import { getPromotions } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import styles from './promo_detail.module.css';
 
-export interface CompanyPromo {
-	title: string;
-	description: string;
-	discount: number;
-	companyId: string;
-	companyTitle: string;
-	id: string;
-}
-
 interface PromoDetailsProps {
 	companyId: string;
 }

@@ -8,33 +8,67 @@ import InputField from '../blocks/input-field';
 import UploadField from '../blocks/upload-field';
 import { Formik, Form, FormikHelpers } from 'formik';
 import Button from '../button/button';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { getCompany, createPromotion } from '@/lib/api';
 
 interface PromotionFormProps {
-	onClose: () => void;
+	companyId: string;
+	onClose?: () => void;
 }
 
 export type PromotionFieldValues = {
 	upload: File | string;
-	name: string;
+	title: string;
 	description: string;
 	discount: number | string;
 };
 
 const initialValues: PromotionFieldValues = {
 	upload: '',
-	name: '',
+	title: '',
 	description: '',
 	discount: '',
 };
 
-function PromotionForm({ onClose }: PromotionFormProps) {
-	const handleSubmit = (
+function PromotionForm({ companyId, onClose }: PromotionFormProps) {
+	const queryClient = useQueryClient();
+
+	const { data: company } = useQuery({
+		queryKey: ['company', companyId],
+		queryFn: () => getCompany(companyId),
+		staleTime: 10 * 1000,
+		enabled: Boolean(companyId),
+	});
+
+	const { mutateAsync, isPending } = useMutation({
+		mutationFn: createPromotion,
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ['promotions', companyId],
+			});
+
+			queryClient.invalidateQueries({
+				queryKey: ['promotions'],
+				exact: true,
+			});
+		},
+	});
+
+	const handleSubmit = async (
 		data: PromotionFieldValues,
 		action: FormikHelpers<PromotionFieldValues>
-	): void => {
-		console.log(data);
+	): Promise<void> => {
+		if (!company) {
+			throw new Error('Company is null');
+		}
+		await mutateAsync({
+			...data,
+			discount: Number(data.discount),
+			companyId: company?.id || '',
+			companyTitle: company?.title || '',
+		});
 		action.resetForm();
-		onClose();
+		if (onClose) onClose();
 	};
 
 	return (
@@ -47,8 +81,8 @@ function PromotionForm({ onClose }: PromotionFormProps) {
 						label='Title'
 						type='text'
 						placeholder='Title'
-						name='name'
-						id='name'
+						name='title'
+						id='title'
 						autoComplete='off'
 					/>
 					<InputField
@@ -72,13 +106,12 @@ function PromotionForm({ onClose }: PromotionFormProps) {
 						autoComplete='off'
 					/>
 					<UploadField
-						required
 						label='Image'
 						placeholder='Upload photo'
 						name='upload'
 						id='upload'
 					/>
-					<Button style={{ width: '100%' }} type='submit'>
+					<Button style={{ width: '100%' }} type='submit' disabled={isPending}>
 						Add promotion
 					</Button>
 				</div>

@@ -6,7 +6,9 @@ import React from 'react';
 import Button from './button';
 import { useRouter } from 'next/navigation';
 
-function AddButtonCompany() {
+interface AddButtonCompanyProps {}
+
+function AddButtonCompany({}: AddButtonCompanyProps) {
 	const router = useRouter();
 	return (
 		<>

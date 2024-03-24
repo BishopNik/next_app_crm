@@ -3,17 +3,10 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './sales_details.module.css';
 import clsx from 'clsx';
-
-interface Sale {
-	id: string;
-	companyId: string;
-	companyTitle: string;
-	sold: number;
-	income: number;
-}
+import { SummarySales } from '@/lib/api';
 
 interface SalesProps {
-	sales: Sale[] | null;
+	sales: SummarySales[] | null;
 }
 
 async function SalesDetailsItems({ sales }: SalesProps) {

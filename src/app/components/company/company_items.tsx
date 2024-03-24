@@ -12,19 +12,6 @@ import statusCSS from '../blocks/status_item.module.css';
 import { getCompanies } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 
-export interface CompanyItem {
-	id: string;
-	title: string;
-	categoryId: string;
-	categoryTitle: string;
-	status: string;
-	hasPromotions: boolean;
-	countryId: string;
-	countryTitle: string;
-	joinedDate: string;
-	description: string;
-}
-
 export type CompanyItemsProps = {};
 
 function CompanyItems({}: CompanyItemsProps) {

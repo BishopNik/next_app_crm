@@ -2,19 +2,21 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './button';
-import Modal from '../blocks/modal';
-import PromotionForm from '../promotion/promotion_form';
+import { useRouter } from 'next/navigation';
 
-function AddPromotionCompany() {
-	const [show, setShow] = useState(false);
+interface AddPromotionCompanyProps {
+	companyId: string;
+}
+
+function AddPromotionCompany({ companyId }: AddPromotionCompanyProps) {
+	const router = useRouter();
 	return (
 		<>
-			<Button onClick={() => setShow(true)}>Add promotion</Button>
-			<Modal show={show} onClose={() => setShow(false)}>
-				<PromotionForm onClose={() => setShow(false)} />
-			</Modal>
+			<Button onClick={() => router.push(`/companies/${companyId}/new-promo`)}>
+				Add promotion
+			</Button>
 		</>
 	);
 }

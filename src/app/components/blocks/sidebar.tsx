@@ -11,7 +11,9 @@ import DashboardSVG from '@/app/icon/dashboard-icon';
 import CompaniesSVG from '@/app/icon/companies-icon';
 import { useRouter } from 'next/navigation';
 
-function Sidebar() {
+interface SidebarProps {}
+
+function Sidebar({}: SidebarProps) {
 	const router = useRouter();
 
 	const handleExitClick = () => {
