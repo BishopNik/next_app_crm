@@ -4,13 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './status.module.css';
 import main from './main-status.module.css';
-
-export enum StatusText {
-	active = 'Active',
-	not_active = 'Not active',
-	pending = 'Pending',
-	suspended = 'Suspended',
-}
+import { StatusText } from '@/lib/api';
 
 export interface StatusComponentProps {
 	type: string;

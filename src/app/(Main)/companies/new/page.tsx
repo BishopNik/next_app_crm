@@ -12,7 +12,7 @@ export default function NewCompany({}: NewCompanyProps) {
 
 	return (
 		<div style={{ marginLeft: 'auto', marginRight: 'auto', padding: '32px 40px' }}>
-			<CompanyForm onClose={() => router.back()} />
+			<CompanyForm onClose={() => router.replace('/companies')} />
 		</div>
 	);
 }

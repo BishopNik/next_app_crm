@@ -43,6 +43,7 @@ function PromotionForm({ companyId, onClose }: PromotionFormProps) {
 	const { mutateAsync, isPending } = useMutation({
 		mutationFn: createPromotion,
 		onSuccess: () => {
+			//(data)
 			queryClient.invalidateQueries({
 				queryKey: ['promotions', companyId],
 			});
@@ -51,6 +52,17 @@ function PromotionForm({ companyId, onClose }: PromotionFormProps) {
 				queryKey: ['promotions'],
 				exact: true,
 			});
+			// queryClient.setQueryData(['promotions', companyId], (oldData: Promotion[]) => {
+			// 	if (data) {
+			// 		return oldData.concat(data);
+			// 	}
+			// });
+
+			// queryClient.setQueryData(['promotions'], (oldData: Promotion[]) => {
+			// 	if (data) {
+			// 		return oldData.concat(data);
+			// 	}
+			// });
 		},
 	});
 
@@ -63,7 +75,7 @@ function PromotionForm({ companyId, onClose }: PromotionFormProps) {
 		}
 		await mutateAsync({
 			...data,
-			discount: Number(data.discount),
+			discount: Number(data.discount) || 0,
 			companyId: company?.id || '',
 			companyTitle: company?.title || '',
 		});

@@ -14,7 +14,7 @@ export default function NewCompany({ params: { id } }: NewCompanyProps) {
 
 	return (
 		<div style={{ marginLeft: 'auto', marginRight: 'auto', padding: '32px 40px' }}>
-			<PromotionForm onClose={() => router.back()} companyId={id} />
+			<PromotionForm onClose={() => router.replace(`/companies/${id}`)} companyId={id} />
 		</div>
 	);
 }

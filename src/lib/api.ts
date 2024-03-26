@@ -25,18 +25,18 @@ export interface Category {
 	title: string;
 }
 
-export enum CompanyStatus {
-	Active = 'active',
-	NotActive = 'notActive',
-	Pending = 'pending',
-	Suspended = 'suspended',
+export enum StatusText {
+	active = 'Active',
+	notActive = 'Not active',
+	pending = 'Pending',
+	suspended = 'Suspended',
 }
 
 export interface Company {
 	id: string;
 	title: string;
 	description: string;
-	status: CompanyStatus;
+	status: keyof typeof StatusText;
 	joinedDate: string;
 	hasPromotions: boolean;
 	categoryId: string;

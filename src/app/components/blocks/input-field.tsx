@@ -10,6 +10,7 @@ export interface InputFieldProps
 	extends InputHTMLAttributes<HTMLInputElement>,
 		Pick<FieldAttributes<string>, 'as'> {
 	label?: string;
+	dfValue?: string;
 }
 
 function InputField({ label, id, ...rest }: InputFieldProps) {
